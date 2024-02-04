@@ -1,0 +1,224 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  bool message = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('UI App with Flutter'),
+          backgroundColor: Colors.green,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+              },
+            ),
+          ],
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                ),
+                child: Text(
+                  'Drawer Header',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                },
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {
+                },
+              ),
+            ],
+          ),
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text('Welcome to My App!',
+              style: TextStyle(
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 40.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+            Column(
+            children: <Widget>[
+              Text('Widget 1',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),),
+            Container(
+              height: 80.0,
+              width: 80.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.orange,
+              ),
+            ),
+              SizedBox(height: 10.0),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  message = true;
+                });
+              },
+              child: Text('OPEN Text Button',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,)),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          children: <Widget>[
+            Text('Widget 2',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),),
+            Container(
+              height: 80.0,
+              width: 80.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.orange,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    message = false;
+                  });
+                },
+                child: Text('CLOSE Text Buttonn',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,)),
+                style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                ),
+            ),
+          ],
+        ),
+        ],
+      ),
+            SizedBox(height: 30.0),
+            if (message)
+              Text(
+                'You pressed the OPEN button, press the CLOSE button to undo.',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 18,
+                ),
+              ),
+            SizedBox(height: 50.0),
+            Text(
+              "Açıklama:",
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              "Bu benim ilk mobil uygulama ödevim",
+              style: TextStyle(
+                fontSize: 18.0,
+              ),
+            ),
+
+          ],
+    ),
+
+    floatingActionButton: FloatingActionButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Dialog Title',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'This is a dialog box.',
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Close the dialog
+                    },
+                    child: Text('Close',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    },
+    child: Icon(Icons.add),
+    ),
+    ),
+    );
+  }
+}
